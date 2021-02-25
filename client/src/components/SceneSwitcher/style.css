@@ -18,5 +18,5 @@
 }
 
 .SceneSwitcher--current {
-  box-shadow: 0 0 0 0.2em rgb(34, 104, 255) inset;
+  box-shadow: 0 0 0 0.2em var(--color--accent) inset;
 }

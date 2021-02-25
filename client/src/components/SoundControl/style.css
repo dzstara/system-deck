@@ -1,0 +1,36 @@
+.SoundControl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.SoundControl--item {
+  display: flex;
+  align-items: stretch;
+  gap: 0.2em;
+}
+
+.SoundControl--volume,
+.SoundControl--muted {
+  padding: 0.4em;
+}
+
+.SoundControl--volume {
+  position: relative;
+  flex: 1 0 auto;
+}
+
+.SoundControl--volume-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--color--accent);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.SoundControl--name {
+  position: relative;
+  z-index: 1;
+}
