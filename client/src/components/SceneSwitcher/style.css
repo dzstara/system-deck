@@ -1,0 +1,22 @@
+.SceneSwitcher {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 15ch;
+}
+
+.SceneSwitcher--item {
+  padding: 1em 1.5em;
+  background: #555;
+  cursor: pointer;
+  text-align: center;
+  word-break: break-all;
+}
+
+.SceneSwitcher--item:active {
+  background: #666;
+}
+
+.SceneSwitcher--current {
+  box-shadow: 0 0 0 0.2em rgb(34, 104, 255) inset;
+}
