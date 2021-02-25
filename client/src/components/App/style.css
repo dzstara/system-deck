@@ -10,11 +10,19 @@
   padding: 0.5em;
 }
 
+.App--title {
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  font-family: var(--font-title);
+  font-size: 2em;
+}
+
 .App--item {
   flex: 0 0 auto;
   border: 1px solid #555;
   padding: 0.5em;
   overflow-y: auto;
+  border-radius: 3px;
 }
 
 .App--item--title {

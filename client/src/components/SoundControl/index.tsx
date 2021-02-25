@@ -1,3 +1,4 @@
+import Icon from "components/Icon";
 import { useEffect, useState } from "react";
 import { obs } from "util/obs";
 import "./style.css";
@@ -71,12 +72,14 @@ export default function SoundControl() {
               style={{ width: source.volume * 100 + "%" }}
             />
             <div className="SoundControl--name">
-              <span>{source.name}</span>{" "}
+              <span>{truncateString(source.name, 14)}</span>{" "}
               <span>{Math.round(source.volume * 100)}%</span>
             </div>
           </div>
 
-          <div className="SoundControl--muted">{source.muted ? "❌" : "✔"}</div>
+          <div className="SoundControl--muted">
+            <Icon name={source.muted ? "volume_off" : "volume_up"} />
+          </div>
         </div>
       ))}
     </div>
@@ -118,4 +121,10 @@ async function getSourceData() {
           )
       )
   );
+}
+
+function truncateString(str: string, maxLength: number) {
+  if (str.length < maxLength) return str;
+
+  return str.slice(0, maxLength) + "...";
 }

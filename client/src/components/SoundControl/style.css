@@ -10,14 +10,10 @@
   gap: 0.2em;
 }
 
-.SoundControl--volume,
-.SoundControl--muted {
-  padding: 0.4em;
-}
-
 .SoundControl--volume {
   position: relative;
   flex: 1 0 auto;
+  padding: 0.4em 0.6em;
 }
 
 .SoundControl--volume-bar {
@@ -28,9 +24,22 @@
   background: var(--color--accent);
   opacity: 0.3;
   z-index: 0;
+  border-radius: 3px;
 }
 
 .SoundControl--name {
   position: relative;
   z-index: 1;
+}
+
+.SoundControl--name > span:nth-child(1) {
+  display: inline-block;
+}
+
+.SoundControl--name > span:nth-child(2) {
+  opacity: 0.5;
+}
+
+.SoundControl--muted {
+  padding: 0.4em;
 }
