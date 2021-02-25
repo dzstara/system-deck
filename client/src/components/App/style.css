@@ -1,0 +1,21 @@
+ul {
+  height: 100vh;
+  min-width: 100%;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 36px;
+  padding: 1em;
+}
+
+ul > li {
+  padding: 2em;
+  background: #555;
+  cursor: pointer;
+}
+
+ul > li:active {
+  background: #666;
+}

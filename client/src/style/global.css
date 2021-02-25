@@ -3,3 +3,9 @@
 *:after {
   box-sizing: border-box;
 }
+
+html {
+  background: #333;
+  color: white;
+  user-select: none;
+}
