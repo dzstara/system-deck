@@ -43,3 +43,7 @@
 .SoundControl--muted {
   padding: 0.4em;
 }
+
+.SoundControl--muted:active {
+  background-color: #444;
+}

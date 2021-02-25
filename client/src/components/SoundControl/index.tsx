@@ -62,6 +62,10 @@ export default function SoundControl() {
     };
   }, []);
 
+  const muteSource = (source: string) => {
+    obs.send("ToggleMute", { source });
+  };
+
   return (
     <div className="SoundControl">
       {sources.map((source) => (
@@ -77,7 +81,10 @@ export default function SoundControl() {
             </div>
           </div>
 
-          <div className="SoundControl--muted">
+          <div
+            className="SoundControl--muted"
+            onClick={() => muteSource(source.name)}
+          >
             <Icon name={source.muted ? "volume_off" : "volume_up"} />
           </div>
         </div>
