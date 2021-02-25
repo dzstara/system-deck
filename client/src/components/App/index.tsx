@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import OBSWebSocket, { Scene } from "obs-websocket-js";
 import { useEffect, useState } from "react";
 import "./style.css";
@@ -8,7 +9,8 @@ const origin = window.location.hostname;
 const obs = new OBSWebSocket();
 
 export default function App() {
-  const [scenes, setScenes] = useState<Array<Scene>>([]);
+  const [currentScene, setCurrentScene] = useState<string | null>(null);
+  const [scenes, setScenes] = useState<Array<Scene> | null>(null);
 
   useEffect(() => {
     console.log("Connecting... ");
@@ -24,6 +26,11 @@ export default function App() {
       })
       .then((response) => {
         setScenes(response.scenes);
+        setCurrentScene(response["current-scene"]);
+
+        obs.on("SwitchScenes", (data) => {
+          setCurrentScene(data["scene-name"]);
+        });
       })
       .catch((error) => {
         console.error("Could not connect!", error);
@@ -34,13 +41,22 @@ export default function App() {
     obs.send("SetCurrentScene", { "scene-name": sceneName });
   };
 
-  return (
+  return scenes ? (
     <ul>
-      {scenes.map((scene) => (
-        <li key={scene.name} onClick={() => switchToScene(scene.name)}>
-          {scene.name}
-        </li>
-      ))}
+      {scenes.map((scene) => {
+        const isCurrentScene = currentScene === scene.name;
+        return (
+          <li
+            key={scene.name}
+            onClick={() => switchToScene(scene.name)}
+            className={classNames({ current: isCurrentScene })}
+          >
+            {scene.name}
+          </li>
+        );
+      })}
     </ul>
+  ) : (
+    <div>Loading scenes</div>
   );
 }

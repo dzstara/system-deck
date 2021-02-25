@@ -19,3 +19,7 @@ ul > li {
 ul > li:active {
   background: #666;
 }
+
+ul > li.current {
+  box-shadow: 0 0 0 0.2em rgb(34, 104, 255) inset;
+}
