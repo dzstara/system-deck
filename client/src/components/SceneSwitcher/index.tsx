@@ -1,16 +1,24 @@
+import { useState, useEffect, useCallback } from "react";
 import classNames from "classnames";
 import { obs } from "util/obs";
 import { Scene } from "obs-websocket-js";
-import { useState, useEffect } from "react";
 import "./style.css";
 
 export default function SceneSwitcher() {
   const [currentScene, setCurrentScene] = useState<string | null>(null);
   const [scenes, setScenes] = useState<Array<Scene> | null>(null);
 
-  obs.on("SwitchScenes", (data) => {
+  const switchSceneListener = useCallback((data: { "scene-name": string }) => {
     setCurrentScene(data["scene-name"]);
-  });
+  }, []);
+
+  useEffect(() => {
+    obs.on("SwitchScenes", switchSceneListener);
+
+    return () => {
+      obs.off("SwitchScenes", switchSceneListener);
+    };
+  }, [switchSceneListener]);
 
   useEffect(() => {
     obs
