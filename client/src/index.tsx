@@ -1,11 +1,19 @@
-import { StrictMode } from "react";
+import { lazy, StrictMode, Suspense } from "react";
 import ReactDOM from "react-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import "style";
-import App from "components/App";
+
+const Command = lazy(() => import("domains/Command"));
 
 ReactDOM.render(
   <StrictMode>
-    <App />
+    <Router>
+      <Suspense fallback={"Loading page"}>
+        <Switch>
+          <Route exact path="/command" component={Command} />
+        </Switch>
+      </Suspense>
+    </Router>
   </StrictMode>,
   document.getElementById("root")
 );
