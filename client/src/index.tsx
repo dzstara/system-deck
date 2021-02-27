@@ -9,7 +9,7 @@ ReactDOM.render(
   <StrictMode>
     <Router>
       <Switch>
-        <Route exact path="/command" component={Command} />
+        <Route path="/command" component={Command} />
         <Route exact path="/soundboard" component={SoundBoard} />
       </Switch>
     </Router>

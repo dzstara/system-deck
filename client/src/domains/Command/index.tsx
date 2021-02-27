@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { NavLink, Route, Switch } from "react-router-dom";
 import { ServerConnection } from "util/loader";
 import { connect as connectObs } from "services/obs";
 import { connect as connectSb } from "services/soundboard";
@@ -14,25 +15,45 @@ function connectToSockets() {
 export default function Command() {
   return (
     <ServerConnection connectFn={connectToSockets}>
-      <div className={classNames("Command--grid", "global--scrollbar-style")}>
-        <div className="Command--title">System Deck</div>
+      <div className="Command">
+        <div
+          className={classNames("Command--sidebar", "global--scrollbar-style")}
+        >
+          <div className="Command--title">System Deck</div>
 
-        <div className={classNames("Command--item", "global--scrollbar-style")}>
-          <div className="Command--item--title">Scenes</div>
+          <div className="Command--navbar">
+            <NavLink
+              to="/command/scenes"
+              className="Command--navbar--item"
+              activeClassName="Command--navbar--item-selected"
+            >
+              Scenes
+            </NavLink>
 
-          <SceneSwitcher />
+            <NavLink
+              to="/command/volume"
+              className="Command--navbar--item"
+              activeClassName="Command--navbar--item-selected"
+            >
+              Volume
+            </NavLink>
+
+            <NavLink
+              to="/command/soundboard"
+              className="Command--navbar--item"
+              activeClassName="Command--navbar--item-selected"
+            >
+              Soundboard
+            </NavLink>
+          </div>
         </div>
 
-        <div className={classNames("Command--item", "global--scrollbar-style")}>
-          <div className="Command--item--title">Volume</div>
-
-          <SoundControl />
-        </div>
-
-        <div className={classNames("Command--item", "global--scrollbar-style")}>
-          <div className="Command--item--title">Soundboard</div>
-
-          <SoundBoard />
+        <div className={classNames("Command--view", "global--scrollbar-style")}>
+          <Switch>
+            <Route exact path="/command/scenes" component={SceneSwitcher} />
+            <Route exact path="/command/volume" component={SoundControl} />
+            <Route exact path="/command/soundboard" component={SoundBoard} />
+          </Switch>
         </div>
       </div>
     </ServerConnection>

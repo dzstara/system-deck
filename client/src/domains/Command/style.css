@@ -1,36 +1,48 @@
-.Command--grid {
+.Command {
   height: 100vh;
-  max-height: 100vh;
-  min-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  width: 100%;
+  overflow: hidden;
   display: flex;
   align-items: stretch;
-  gap: 0.5em;
-  padding: 0.5em;
   background: #333;
   color: white;
-  font-size: 32px;
+}
+
+.Command > :not(:last-child) {
+  border-right: 1px solid #555;
 }
 
 .Command--title {
-  white-space: nowrap;
-  writing-mode: vertical-rl;
   font-family: var(--font-title);
-  font-size: 2em;
+  font-size: 28px;
+  padding: 0.8em;
+  text-align: center;
+  background-color: #080808;
+  color: #c91200;
 }
 
-.Command--item {
-  flex: 0 0 auto;
-  border: 1px solid #555;
-  padding: 0.5em;
+.Command--navbar {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 28px;
+  border-top: 1px solid #555;
+}
+
+.Command--navbar--item {
+  border-bottom: 1px solid #555;
+  padding: 0.8em 1em;
+  color: white;
+  text-decoration: none;
+}
+
+.Command--navbar--item-selected {
+  background: #444;
+}
+
+.Command--view {
+  padding: 0.8em 1em;
+  flex: 1 0 auto;
   overflow-y: auto;
-  border-radius: 3px;
-}
-
-.Command--item--title {
-  margin-bottom: 0.5em;
-  font-weight: bold;
-  font-size: 0.8em;
-  opacity: 0.4;
+  font-size: 24px;
 }
