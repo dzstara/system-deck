@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { obs } from "util/obs";
+import { obs } from "services/obs";
 import Icon from "components/Icon";
 
 interface Volume {

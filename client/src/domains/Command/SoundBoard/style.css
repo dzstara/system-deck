@@ -1,0 +1,39 @@
+.SoundBoardContent {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.SoundBoardItem {
+  border: 1px solid #555;
+  border-radius: 3px;
+}
+
+.SoundBoardItem--name {
+  font-size: 0.6em;
+  padding: 0.5em 0.8em;
+}
+
+.SoundBoardItem--controls {
+  border-top: 1px solid #555;
+  display: flex;
+  align-items: stretch;
+}
+
+.SoundBoardItem--controls > div {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.3em;
+}
+
+.SoundBoardItem--controls > div:not(:last-child) {
+  border-right: 1px solid #555;
+}
+
+.SoundBoardItem--controls > div:hover {
+  background: #555;
+}

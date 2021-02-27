@@ -1,12 +1,19 @@
 import classNames from "classnames";
-import { ObsLoader } from "util/obs";
-import SceneSwitcher from "domains/Command/SceneSwitcher";
-import SoundControl from "domains/Command/SoundControl";
+import { ServerConnection } from "util/loader";
+import { connect as connectObs } from "services/obs";
+import { connect as connectSb } from "services/soundboard";
+import SceneSwitcher from "./SceneSwitcher";
+import SoundBoard from "./SoundBoard";
+import SoundControl from "./SoundControl";
 import "./style.css";
+
+function connectToSockets() {
+  return Promise.all([connectObs(), connectSb()]);
+}
 
 export default function Command() {
   return (
-    <ObsLoader>
+    <ServerConnection connectFn={connectToSockets}>
       <div className={classNames("Command--grid", "global--scrollbar-style")}>
         <div className="Command--title">System Deck</div>
 
@@ -21,7 +28,13 @@ export default function Command() {
 
           <SoundControl />
         </div>
+
+        <div className={classNames("Command--item", "global--scrollbar-style")}>
+          <div className="Command--item--title">Soundboard</div>
+
+          <SoundBoard />
+        </div>
       </div>
-    </ObsLoader>
+    </ServerConnection>
   );
 }

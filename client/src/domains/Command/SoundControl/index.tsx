@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { obs } from "util/obs";
+import { obs } from "services/obs";
 import SoundControlItem from "./SoundControlItem";
 import "./style.css";
 

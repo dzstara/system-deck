@@ -1,18 +1,14 @@
-import OBSWebSocket from "obs-websocket-js";
 import { PropsWithChildren, useEffect, useState } from "react";
-
-const password = process.env.REACT_APP_OBS_WS_PASSWORD;
-const origin = window.location.hostname;
-const address = origin + ":4444";
-
-export const obs = new OBSWebSocket();
 
 interface ObsLoaderState {
   error: Error | null;
   loading: boolean;
 }
 
-export function ObsLoader({ children }: PropsWithChildren<{}>) {
+export function ServerConnection({
+  children,
+  connectFn,
+}: PropsWithChildren<{ connectFn: () => Promise<unknown> }>) {
   const [state, setState] = useState<ObsLoaderState>({
     error: null,
     loading: true,
@@ -24,38 +20,34 @@ export function ObsLoader({ children }: PropsWithChildren<{}>) {
       error: null,
     });
 
-    console.log(`Connecting to ${address}...`);
+    console.log(`Connecting to service...`);
 
-    obs
-      .connect({
-        address,
-        password,
-      })
+    connectFn()
       .then(() => {
         setState({
           loading: false,
           error: null,
         });
-        console.log("Connected to OBS.");
+        console.log("Connected to service.");
       })
       .catch((error) => {
         setState({
           loading: false,
           error,
         });
-        console.error("Error trying to connect to OBS!");
+        console.error("Error trying to connect to service!");
         console.error(error);
       });
-  }, []);
+  }, [connectFn]);
 
   if (state.loading) {
-    return <div>Connecting to OBS...</div>;
+    return <div>Connecting to service...</div>;
   }
 
   if (state.error) {
     return (
       <div>
-        <p>Could not connect to OBS!</p>
+        <p>Could not connect to service!</p>
 
         <pre>{state.error.toString()}</pre>
       </div>

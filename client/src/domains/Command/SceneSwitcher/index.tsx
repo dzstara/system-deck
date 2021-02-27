@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import classNames from "classnames";
-import { obs } from "util/obs";
 import { Scene } from "obs-websocket-js";
+import { obs } from "services/obs";
 import "./style.css";
 
 export default function SceneSwitcher() {
