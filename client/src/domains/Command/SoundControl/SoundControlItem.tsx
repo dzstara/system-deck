@@ -26,14 +26,18 @@ export default function SoundControlItem({ source }: { source: string }) {
     obs.send("SetVolume", { source, volume });
   };
 
+  const onVolumeClick = (
+    event: React.MouseEvent<HTMLDivElement> | React.PointerEvent<HTMLDivElement>
+  ) => {
+    const percent = getPercentX(event);
+    setVolume(percent);
+  };
+
   const onVolumePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
     if (!pointerIsActiveRef.current) return;
 
-    const rect = (event.target as any).getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const width = (event.target as HTMLElement).offsetWidth;
-
-    setVolume(x / width);
+    const percent = getPercentX(event);
+    setVolume(percent);
   };
 
   const muteSource = () => {
@@ -82,22 +86,25 @@ export default function SoundControlItem({ source }: { source: string }) {
     };
   }, [sourceMuteStateChangedListener, sourceVolumeChangedListener, source]);
 
+  const realVolume = Math.pow(data.volume, 1 / 4);
+
   return (
     <div className="SoundControlItem">
       <div
         className="SoundControlItem--volume"
+        onClick={onVolumeClick}
         onPointerMove={onVolumePointerMove}
         onPointerDown={onVolumePointerDown}
         onPointerUp={onVolumePointerUp}
       >
         <div
           className="SoundControlItem--volume-bar"
-          style={{ width: data.volume * 100 + "%" }}
+          style={{ width: realVolume * 100 + "%" }}
         />
 
         <div className="SoundControlItem--name">
           <span>{truncateString(source, 14)}</span>{" "}
-          <span>{Math.round(data.volume * 100)}%</span>
+          <span>{Math.round(realVolume * 100)}%</span>
         </div>
       </div>
 
@@ -128,4 +135,12 @@ function getVolumeData(sourceName: string) {
       })
       .catch(reject)
   );
+}
+
+function getPercentX(event: React.PointerEvent | React.MouseEvent) {
+  const rect = (event.target as any).getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const width = (event.target as HTMLElement).offsetWidth;
+
+  return Math.pow(x / width, 4);
 }
