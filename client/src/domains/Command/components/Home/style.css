@@ -1,0 +1,16 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.Home--title {
+  font-size: 2em;
+}
+
+.Home--credits {
+  margin-top: 0.5em;
+  opacity: 0.3;
+}

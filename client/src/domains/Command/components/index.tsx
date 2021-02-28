@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { NavLink, Route, Switch } from "react-router-dom";
 import DataWrapper from "./DataWrapper";
+import Home from "./Home";
 import SceneSwitcher from "./SceneSwitcher";
 import SoundBoard from "./SoundBoard";
 import SoundControl from "./SoundControl";
@@ -38,8 +39,6 @@ export default function Command() {
             </NavLink>
           </div>
 
-          <div className="Command--credits">System Deck by dzstara</div>
-
           <div className="Command--quick">
             <Quick />
           </div>
@@ -47,6 +46,7 @@ export default function Command() {
 
         <div className={classNames("Command--view", "global--scrollbar-style")}>
           <Switch>
+            <Route exact path="/command/" component={Home} />
             <Route exact path="/command/scenes" component={SceneSwitcher} />
             <Route exact path="/command/volume" component={SoundControl} />
             <Route exact path="/command/soundboard" component={SoundBoard} />
