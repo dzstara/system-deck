@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { obs } from "services/obs";
 import Icon from "components/Icon";
+import classNames from "classnames";
 
 interface Volume {
   volume: number;
@@ -108,7 +109,12 @@ export default function SoundControlItem({ source }: { source: string }) {
         </div>
       </div>
 
-      <div className="SoundControlItem--muted" onClick={muteSource}>
+      <div
+        className={classNames("SoundControlItem--muted", {
+          "SoundControlItem--muted--active": data.muted,
+        })}
+        onClick={muteSource}
+      >
         <Icon name={data.muted ? "volume_off" : "volume_up"} />
       </div>
     </div>

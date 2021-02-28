@@ -7,6 +7,8 @@
 html {
   user-select: none;
   font-family: var(--font-text);
+  font-weight: 200;
+  letter-spacing: -0.06em;
   background: black;
   color: white;
 }

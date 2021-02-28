@@ -19,8 +19,6 @@ export default function Command() {
         <div
           className={classNames("Command--sidebar", "global--scrollbar-style")}
         >
-          <div className="Command--title">System Deck</div>
-
           <div className="Command--navbar">
             <NavLink
               to="/command/scenes"
@@ -46,6 +44,8 @@ export default function Command() {
               Soundboard
             </NavLink>
           </div>
+
+          <div className="Command--credits">System Deck by dzstara</div>
         </div>
 
         <div className={classNames("Command--view", "global--scrollbar-style")}>

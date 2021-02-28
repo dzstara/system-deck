@@ -2,5 +2,9 @@
   --font-title: "DM Serif Display", system-ui, sans-serif;
   --font-text: Inter, system-ui, sans-serif;
 
-  --color--accent: rgb(34, 104, 255);
+  --color-accent: #2268ff;
+  --color-accent-transparent: #2268ff50;
+  --color-background: rgb(39, 39, 43);
+  --color-border: #fff3;
+  --color-text: rgb(233, 233, 245);
 }

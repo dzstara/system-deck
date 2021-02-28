@@ -37,14 +37,12 @@ function SoundBoardItem({ item }: { item: string }) {
   return (
     <div className="SoundBoardItem">
       <div className="SoundBoardItem--name">{name}</div>
-      <div className="SoundBoardItem--controls">
-        <div onClick={onPlay}>
-          <Icon name="play_arrow" />
-        </div>
+      <div className="SoundBoardItem--control" onClick={onPlay}>
+        <Icon name="play_arrow" />
+      </div>
 
-        <div onClick={onStop}>
-          <Icon name="stop" />
-        </div>
+      <div className="SoundBoardItem--control" onClick={onStop}>
+        <Icon name="stop" />
       </div>
     </div>
   );

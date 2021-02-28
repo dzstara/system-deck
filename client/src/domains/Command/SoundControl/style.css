@@ -1,19 +1,24 @@
 .SoundControl {
   display: flex;
   flex-direction: column;
-  gap: 0.2em;
+  gap: 1em;
 }
 
 .SoundControlItem {
   display: flex;
   align-items: stretch;
-  gap: 0.2em;
+  gap: 1em;
 }
 
 .SoundControlItem--volume {
   position: relative;
   flex: 1 0 auto;
-  padding: 0.4em 0.6em;
+  padding: 0.8em 1em;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .SoundControlItem--volume * {
@@ -25,8 +30,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: var(--color--accent);
-  opacity: 0.3;
+  background-color: #fff2;
   z-index: 0;
   border-radius: 3px;
 }
@@ -45,9 +49,16 @@
 }
 
 .SoundControlItem--muted {
-  padding: 0.4em;
+  padding: 0.8em 1em;
+  border-radius: 3px;
+  border: 1px solid var(--color-accent);
+  background-color: var(--color-accent-transparent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.SoundControlItem--muted:active {
-  background-color: #444;
+.SoundControlItem--muted--active {
+  border-color: var(--color-border);
+  background-color: transparent;
 }
