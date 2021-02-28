@@ -1,7 +1,14 @@
-.SoundControl {
+.SoundControl--list {
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
+
+.SoundControl--expand {
+  display: flex;
+  align-items: center;
+  margin: 1.5em 0;
+  cursor: pointer;
 }
 
 .SoundControlItem {
@@ -50,17 +57,17 @@
   font-size: 0.7em;
 }
 
-.SoundControlItem--muted {
+.SoundControlItem--action {
   padding: 0.8em 1em;
   border-radius: 3px;
-  border: 1px solid var(--color-accent);
-  background-color: var(--color-accent-transparent);
+  border: 1px solid var(--color-border);
+  background-color: transparent;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 
-.SoundControlItem--muted--active {
-  border-color: var(--color-border);
-  background-color: transparent;
+.SoundControlItem--action--active {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-transparent);
 }

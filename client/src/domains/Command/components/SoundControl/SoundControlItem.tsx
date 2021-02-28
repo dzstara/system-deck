@@ -3,7 +3,15 @@ import classNames from "classnames";
 import Icon from "components/Icon";
 import { useSource } from "domains/Command/hooks/source";
 
-export default function SoundControlItem({ source }: { source: string }) {
+export default function SoundControlItem({
+  source,
+  hidden,
+  toggleHidden,
+}: {
+  source: string;
+  hidden: boolean;
+  toggleHidden: () => unknown;
+}) {
   const { volume, setVolume, muted, toggleMute } = useSource(source);
   const pointerIsActiveRef = useRef(false);
 
@@ -50,12 +58,16 @@ export default function SoundControlItem({ source }: { source: string }) {
       </div>
 
       <div
-        className={classNames("SoundControlItem--muted", {
-          "SoundControlItem--muted--active": muted,
+        className={classNames("SoundControlItem--action", {
+          "SoundControlItem--action--active": !muted,
         })}
         onClick={toggleMute}
       >
         <Icon name={muted ? "volume_off" : "volume_up"} />
+      </div>
+
+      <div className="SoundControlItem--action" onClick={toggleHidden}>
+        <Icon name={hidden ? "visibility" : "visibility_off"} />
       </div>
     </div>
   );
