@@ -1,7 +1,7 @@
 import { LazyDataOrModifiedFn } from "use-async-resource";
 import { SoundBoardResourceWrapper, sb } from "services/soundboard";
-import "./style.css";
 import Icon from "components/Icon";
+import "./style.css";
 
 export default function SoundBoardWrapper() {
   return <SoundBoardResourceWrapper component={SoundBoardContent} />;

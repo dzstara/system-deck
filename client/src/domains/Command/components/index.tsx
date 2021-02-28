@@ -1,24 +1,17 @@
 import classNames from "classnames";
 import { NavLink, Route, Switch } from "react-router-dom";
-import { ServerConnection } from "util/loader";
-import { connect as connectObs } from "services/obs";
-import { connect as connectSb } from "services/soundboard";
+import DataWrapper from "./DataWrapper";
 import SceneSwitcher from "./SceneSwitcher";
 import SoundBoard from "./SoundBoard";
 import SoundControl from "./SoundControl";
+import Quick from "./Quick";
 import "./style.css";
-
-function connectToSockets() {
-  return Promise.all([connectObs(), connectSb()]);
-}
 
 export default function Command() {
   return (
-    <ServerConnection connectFn={connectToSockets}>
+    <DataWrapper>
       <div className="Command">
-        <div
-          className={classNames("Command--sidebar", "global--scrollbar-style")}
-        >
+        <div className="Command--sidebar">
           <div className="Command--navbar">
             <NavLink
               to="/command/scenes"
@@ -46,6 +39,10 @@ export default function Command() {
           </div>
 
           <div className="Command--credits">System Deck by dzstara</div>
+
+          <div className="Command--quick">
+            <Quick />
+          </div>
         </div>
 
         <div className={classNames("Command--view", "global--scrollbar-style")}>
@@ -56,6 +53,6 @@ export default function Command() {
           </Switch>
         </div>
       </div>
-    </ServerConnection>
+    </DataWrapper>
   );
 }

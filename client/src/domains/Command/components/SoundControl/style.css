@@ -45,7 +45,9 @@
 }
 
 .SoundControlItem--name > span:nth-child(2) {
+  margin-left: 0.8ch;
   opacity: 0.5;
+  font-size: 0.7em;
 }
 
 .SoundControlItem--muted {
