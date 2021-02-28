@@ -2,6 +2,7 @@ import { LazyDataOrModifiedFn } from "use-async-resource";
 import { SoundBoardResourceWrapper, sb } from "services/soundboard";
 import Icon from "components/Icon";
 import "./style.css";
+import classNames from "classnames";
 
 export default function SoundBoardWrapper() {
   return <SoundBoardResourceWrapper component={SoundBoardContent} />;
@@ -36,9 +37,18 @@ function SoundBoardItem({ item }: { item: string }) {
 
   return (
     <div className="SoundBoardItem">
-      <div className="SoundBoardItem--name">{name}</div>
-      <div className="SoundBoardItem--control" onClick={onPlay}>
-        <Icon name="play_arrow" />
+      <div
+        className={classNames(
+          "SoundBoardItem--control",
+          "SoundBoardItem--name"
+        )}
+        onClick={onPlay}
+      >
+        <div>{name}</div>
+
+        <div>
+          <Icon name="play_arrow" />
+        </div>
       </div>
 
       <div className="SoundBoardItem--control" onClick={onStop}>
