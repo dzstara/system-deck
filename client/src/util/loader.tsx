@@ -49,7 +49,7 @@ export function ServerConnection({
       <div>
         <p>Could not connect to service!</p>
 
-        <pre>{state.error.toString()}</pre>
+        <pre>{JSON.stringify(state.error, null, "  ")}</pre>
       </div>
     );
   }

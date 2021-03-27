@@ -4,14 +4,6 @@
   box-sizing: border-box;
 }
 
-html {
-  font-family: var(--font-text);
-  font-weight: 200;
-  letter-spacing: -0.06em;
-  background: black;
-  color: white;
-}
-
 .global--scrollbar-style {
   scrollbar-color: #777 transparent;
   scrollbar-width: thin;

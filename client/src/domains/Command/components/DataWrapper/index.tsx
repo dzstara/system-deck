@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import { ServerConnection } from "util/loader";
 import { connect as connectObs } from "services/obs";
-import { connect as connectSb } from "services/soundboard";
+import { connect as connectSb } from "services/server";
 import { SourcesContextProvider } from "domains/Command/contexts/sources";
 import { ScenesContextProvider } from "domains/Command/contexts/scenes";
 

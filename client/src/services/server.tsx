@@ -8,28 +8,28 @@ import {
 const origin = window.location.hostname;
 const address = origin + ":8020";
 
-const server = "http://" + window.location.hostname + ":8010";
+const serverURL = "http://" + window.location.hostname + ":8010";
 
-export const soundBoardFilePath = server + "/soundboard/static/";
+export const soundBoardFilePath = serverURL + "/soundboard/static/";
 
-export let sb: WebSocket;
+export let server: WebSocket;
 
 export function connect() {
   return new Promise<void>((resolve, reject) => {
-    sb = new WebSocket("ws://" + address);
+    server = new WebSocket("ws://" + address);
 
-    sb.addEventListener("open", function open() {
+    server.addEventListener("open", function open() {
       resolve();
     });
 
-    sb.addEventListener("error", function error(ev: Event) {
+    server.addEventListener("error", function error(ev: Event) {
       reject(ev);
     });
   });
 }
 
 export async function fetchSoundboard() {
-  const response = await fetch(server + "/soundboard/");
+  const response = await fetch(serverURL + "/soundboard/");
   const list: Array<string> = await response.json();
   return list.sort();
 }

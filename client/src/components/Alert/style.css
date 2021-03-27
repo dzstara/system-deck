@@ -1,0 +1,59 @@
+.Toastify__toast-container {
+  width: 480px;
+}
+
+.Toastify__toast--default {
+  font-size: 28px;
+  font-family: "DM Serif Text";
+  box-shadow: 0 0 0 3px #080808;
+  background: #080808;
+  color: #ff1500;
+  border-radius: 0;
+  padding: 0;
+  letter-spacing: 0.02em;
+}
+
+.Toastify__toast--default,
+.Toastify__toast-body {
+  padding: 0;
+}
+
+.Toastify__toast-body {
+  width: 100%;
+}
+
+.Toastify__close-button {
+  display: none;
+}
+
+.Alert {
+  display: flex;
+  align-items: stretch;
+}
+
+.Alert > * {
+  border: 1px solid #c91200;
+}
+
+.Alert--icon {
+  flex: 0 0 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  min-height: 1.5em;
+  color: white;
+  padding: 0.25em;
+}
+
+.Alert--text {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  margin-left: 4px;
+}
+
+.Alert--highlight {
+  color: white;
+}

@@ -1,5 +1,5 @@
 import { LazyDataOrModifiedFn } from "use-async-resource";
-import { SoundBoardResourceWrapper, sb } from "services/soundboard";
+import { SoundBoardResourceWrapper, server } from "services/server";
 import Icon from "components/Icon";
 import "./style.css";
 import classNames from "classnames";
@@ -26,11 +26,11 @@ function SoundBoardContent({
 
 function SoundBoardItem({ item }: { item: string }) {
   const onPlay = () => {
-    sb.send(JSON.stringify({ type: "LaunchSoundboardItem", data: item }));
+    server.send(JSON.stringify({ type: "LaunchSoundboardItem", data: item }));
   };
 
   const onStop = () => {
-    sb.send(JSON.stringify({ type: "StopSoundboardItem", data: item }));
+    server.send(JSON.stringify({ type: "StopSoundboardItem", data: item }));
   };
 
   const name = item.split(".").slice(0, -1).join(".");

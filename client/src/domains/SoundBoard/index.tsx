@@ -1,10 +1,10 @@
 import { ServerConnection } from "util/loader";
 import {
   connect,
-  sb,
+  server,
   SoundBoardResourceWrapper,
   soundBoardFilePath,
-} from "services/soundboard";
+} from "services/server";
 import { LazyDataOrModifiedFn } from "use-async-resource";
 import { useEffect, useRef } from "react";
 
@@ -59,10 +59,10 @@ function SoundBoardItem({ file }: { file: string }) {
       }
     };
 
-    sb.addEventListener("message", handler);
+    server.addEventListener("message", handler);
 
     return () => {
-      sb.removeEventListener("message", handler);
+      server.removeEventListener("message", handler);
     };
   }, [file]);
 
